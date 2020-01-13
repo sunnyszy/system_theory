@@ -1,0 +1,18 @@
+
+\begin{algorithm}
+\begin{algorithmic}[1]
+\Procedure{\textsc{Paging}}{$k,n$}
+    \State See the new variable $x( p_t, r(p_t,t) ) \leftarrow 0$ (It can only be increased at times $t' > t$)
+    \If{all primal constraints corresponding to time $t$ are satisfied}
+        \State Increase variable $y(t,S)$ continuously
+        \State For each $p \in S \backslash \{p_t\}$, increase the variable $x(p,r(p,t))$ at rate
+        \begin{align*}
+            \frac{ \d x(p, r(p,t)) }{ \d y (t,S) } = \frac{1}{c_p} \cdot \ln (k+1) \cdot \min \{ w(S) - k, w_p \} \cdot ( x(p, r(p,t)) + 1/k )
+        \end{align*}
+        \State If $x(p, r(p,t)) = 1$, then remove $p$ from $S$, i.e., $S \leftarrow S \backslash \{p \}$
+    \Else
+        \State
+    \EndIf
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
